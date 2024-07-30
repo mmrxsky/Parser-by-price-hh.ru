@@ -73,7 +73,7 @@ class UserInteractive(WorkWithJson):
         :param self:
         :return:
         """
-        print("Hello, user")
+        print("Добро пожаловать в программу: Parser price hh.ru")
         user_name = input("Как ваше имя?  ")
         user = UserInteractive(user_name)
 
