@@ -6,10 +6,20 @@ from src.vacancy import Vacancy
 
 class UserInteractive(WorkWithJson):
     """
-    Класс, обеспечивающий взаимодействие с пользователем
+    Класс, обеспечивающий взаимодействие с пользователем.
+
+    Этот класс позволяет выполнять различные операции с вакансиями, такие как
+    получение вакансий с сайта HeadHunter, чтение/запись вакансий в файл и
+    взаимодействие с пользователем через консоль.
     """
 
     def __init__(self, user_name: str):
+        """
+        Инициализирует объект UserInteractive и задает имя пользователя.
+
+        Args:
+        user_name (str): Имя пользователя.
+        """
         super().__init__()
         self.user_name = user_name
         self.vacancies_list = []
@@ -17,9 +27,12 @@ class UserInteractive(WorkWithJson):
     @staticmethod
     def get_vacancies_list(keyword: str):
         """
-        Получение с сайта HH списка вакансий
-        :param keyword:
-        :return:
+        Получение с сайта HH списка вакансий по ключевому слову.
+        Args:
+            keyword (str): Ключевое слово для поиска вакансий.
+
+        Returns:
+            list[dict]: Список вакансий.
         """
 
         hh = HH(keyword)
@@ -28,7 +41,8 @@ class UserInteractive(WorkWithJson):
     def get_vacancies_list_from_file(self) -> list[dict]:
         """
         Получение из файла списка вакансий
-        :return:
+        Returns:
+            list[dict]: Список вакансий.
         """
 
         work_file = WorkWithJson()
@@ -41,8 +55,11 @@ class UserInteractive(WorkWithJson):
         """
         Получение заданного пользователем количества вакансий с сортировкой
         по уровню зарплат (с убыванием)
-        :param n:
-        :return:
+        Args:
+            n (int): Количество вакансий для вывода.
+
+        Returns:
+            list[dict]: Отсортированный список вакансий.
         """
 
         vac_filter = []
@@ -55,7 +72,8 @@ class UserInteractive(WorkWithJson):
     def get_vacancy_from_keywords(self) -> list[dict]:
         """
         Получение списка вакансий по заданному ключевому слову
-        :return:
+         Returns:
+            list[dict]: Список вакансий, соответствующих ключевому слову.
         """
         keywords = input("Введите ключевое слово:  ")  # .split() сделано для одного
         print()
@@ -70,6 +88,8 @@ class UserInteractive(WorkWithJson):
     def user_interaction(self):
         """
         Функция для взаимодействия с пользователем
+        Эта функция осуществляет полный цикл взаимодействия с пользователем, включая
+        получение ключевого слова, сохранение/удаление файла, вывод вакансий на экран и т.д.
         :param self:
         :return:
         """
